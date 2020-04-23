@@ -1,0 +1,35 @@
+.lin-alert {
+  padding: $alert-padding-y $alert-padding-x;
+  position: relative;
+}
+
+.lin-alert-success {
+  @include alert-style($success);
+}
+
+.lin-alert-info {
+  @include alert-style($info, 50%);
+}
+
+.lin-alert-warning {
+  @include alert-style($warning, 35%);
+}
+
+.lin-alert-error {
+  @include alert-style($danger, 40%);
+}
+
+.lin-alert-message {
+  margin: 0;
+  color: rgba(0, 0, 0, 0.85);
+  font-size: $alert-font-size;
+  line-height: $alert-line-height;
+  font-weight: $alert-font-weight;
+}
+
+.lin-alert-close {
+  position: absolute;
+  top: $alert-close-top;
+  right: $alert-close-right;
+  cursor: pointer;
+}
