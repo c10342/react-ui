@@ -29,14 +29,14 @@
     outline: none;
   }
   &:disabled,
-  &.lin-disabled {
+  &.lin-button-disabled {
     color: $color;
     background: $background;
     border-color: $border;
   }
 }
 
-@mixin alert-style($color, $percent: 50%) {
-  background-color: lighten($color, $percent);
-  border: $alert-border-width solid lighten($color, 10%);
+@mixin alert-style($background-color, $border-color) {
+  background-color: $background-color;
+  border: $alert-border-width solid $border-color;
 }

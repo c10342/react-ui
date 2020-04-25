@@ -1,0 +1,105 @@
+.lin-menu {
+  display: flex;
+  flex-wrap: wrap;
+  padding-left: 0;
+  list-style: none;
+  border-bottom: $menu-border-width solid $menu-border-color;
+  box-shadow: $menu-box-shadow;
+  > .lin-menu-item {
+    padding: $menu-item-padding-y $menu-item-padding-x;
+    cursor: pointer;
+    transition: $menu-transition;
+    &:hover,
+    &:focus {
+      text-decoration: none;
+    }
+    &.lin-menu-item-is-disabled {
+      color: $menu-item-disabled-color;
+      pointer-events: none;
+      cursor: default;
+    }
+    &.lin-menu-item-is-active,
+    &:hover {
+      color: $menu-item-active-color;
+      border-bottom: $menu-item-active-border-width solid
+        $menu-item-active-color;
+    }
+  }
+}
+
+.lin-submenu-item {
+  position: relative;
+  .submenu-title {
+    display: flex;
+    align-items: center;
+  }
+}
+
+.lin-submenu {
+  display: none;
+  list-style: none;
+  padding-left: 0;
+  white-space: nowrap;
+  .lin-menu-item {
+    padding: $menu-item-padding-y $menu-item-padding-x;
+    cursor: pointer;
+    transition: $menu-transition;
+    color: $body-color;
+    &.lin-menu-item-is-active,
+    &:hover {
+      color: $menu-item-active-color !important;
+    }
+
+    &.lin-menu-item-is-disabled {
+      color: $menu-item-disabled-color;
+      pointer-events: none;
+      cursor: default;
+    }
+  }
+}
+
+.lin-submenu-open {
+  display: block;
+}
+
+.lin-menu-horizontal {
+  > .lin-menu-item {
+    border-bottom: $menu-item-active-border-width solid transparent;
+  }
+  .lin-submenu {
+    position: absolute;
+    background: $white;
+    z-index: 100;
+    top: calc(100% + 8px);
+    left: 0;
+    border: $menu-border-width solid $menu-border-color;
+    box-shadow: $submenu-box-shadow;
+  }
+
+  .lin-submenu-active {
+    border-bottom: $menu-item-active-border-width solid $menu-item-active-color;
+  }
+}
+
+.lin-menu-vertical {
+  flex-direction: column;
+  border-bottom: 0px;
+  border-right: $menu-border-width solid $menu-border-color;
+  width: auto;
+  .lin-menu-item {
+    border-left: $menu-item-active-border-width solid transparent;
+    &.lin-menu-item-is-active,
+    &:hover {
+      border-bottom: 0px;
+      border-left: $menu-item-active-border-width solid $menu-item-active-color;
+    }
+  }
+  .lin-submenu-item:hover {
+    border-left: $menu-item-active-border-width solid transparent !important;
+  }
+  .lin-submenu-active {
+    > .lin-submenu-title {
+      color: $menu-item-active-color;
+    }
+  }
+}
