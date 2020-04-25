@@ -4,27 +4,44 @@
 }
 
 .lin-alert-success {
-  @include alert-style($success);
+  @include alert-style(
+    $alert-success-background-color,
+    $alert-success-border-color
+  );
 }
 
 .lin-alert-info {
-  @include alert-style($info, 50%);
+  @include alert-style($alert-info-background-color, $alert-info-border-color);
 }
 
 .lin-alert-warning {
-  @include alert-style($warning, 35%);
+  @include alert-style(
+    $alert-warning-background-color,
+    $alert-warning-border-color
+  );
 }
 
 .lin-alert-error {
-  @include alert-style($danger, 40%);
+  @include alert-style(
+    $alert-error-background-color,
+    $alert-error-border-color
+  );
 }
 
 .lin-alert-message {
   margin: 0;
-  color: rgba(0, 0, 0, 0.85);
-  font-size: $alert-font-size;
-  line-height: $alert-line-height;
-  font-weight: $alert-font-weight;
+  color: $alert-message-color;
+  font-size: $alert-message-font-size;
+  line-height: $alert-message-line-height;
+  font-weight: $alert-message-font-weight;
+}
+
+.lin-alert-title {
+  margin: 0;
+  color: $alert-title-color;
+  font-size: $alert-title-font-size;
+  line-height: $alert-title-line-height;
+  font-weight: $alert-title-font-weight;
 }
 
 .lin-alert-close {
