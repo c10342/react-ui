@@ -18,7 +18,7 @@
   box-shadow: $btn-box-shadow;
   cursor: pointer;
   transition: $btn-transition;
-  &.lin-disabled,
+  &.lin-button-disabled,
   &[disabled] {
     cursor: not-allowed;
     opacity: $btn-disabled-opacity;
@@ -80,7 +80,7 @@
     box-shadow: none;
   }
   &:disabled,
-  &.lin-disabled {
+  &.lin-button-disabled {
     color: $btn-link-disabled-color;
     pointer-events: none;
   }
