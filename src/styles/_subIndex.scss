@@ -1,0 +1,6 @@
+// 不需要写_，这是sass的一种写法，告诉sass这些样式不打包到css中，只能做导入，也是一种模块化
+
+// config
+@import "variables";
+
+@import "mixin";
