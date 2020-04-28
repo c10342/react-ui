@@ -271,6 +271,24 @@ $menu-item-active-color: $primary !default;
 $menu-item-active-border-width: 2px !default;
 $menu-item-disabled-color: $gray-600 !default;
 
+// tabs
+// 基本属性
+$tab-item-padding-y: 0.5rem !default;
+$tab-item-padding-x: 1rem !default;
+
+// 禁用属性
+$tab-item-disabled-color: $gray-600 !default;
+
+// type === 'card'
+$tab-item-card-border-color: $gray-400 !default;
+$tab-item-card-border-width: 1px !default;
+$tab-item-card-border-radius: $border-radius !default;
+
+// 选中属性
+$tab-item-active-color: $primary !default;
+$tab-item-active-border-width: 2px !default;
+$tab-transition: color 0.15s ease-in-out, border-color 0.15s ease-in-out !default;
+
 //sub-menu
 //submenu
 $submenu-box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.12),

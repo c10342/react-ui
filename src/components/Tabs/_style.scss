@@ -1,0 +1,44 @@
+.lin-tabs {
+  display: flex;
+  flex-direction: row;
+  list-style: none;
+  padding: 0;
+  border-bottom: $tab-item-card-border-width solid $tab-item-card-border-color;
+}
+
+.lin-tab-item {
+  padding: $tab-item-padding-y $tab-item-padding-x;
+  cursor: pointer;
+  transition: $tab-transition;
+  &:hover {
+    color: $tab-item-active-color;
+  }
+}
+
+.lin-tab-item-line {
+  border-bottom: $tab-item-active-border-width solid transparent;
+  &.lin-tab-item-active {
+    color: $tab-item-active-color;
+    border-bottom: $tab-item-active-border-width solid $tab-item-active-color;
+  }
+}
+
+.lin-tab-item-card {
+  border: $tab-item-card-border-width solid transparent;
+  margin-bottom: -$tab-item-card-border-width;
+  &.lin-tab-item-active {
+    color: $tab-item-active-color;
+    border: $tab-item-card-border-width solid $tab-item-card-border-color;
+    border-bottom: $tab-item-card-border-width solid white;
+    border-top-left-radius: $tab-item-card-border-radius;
+    border-top-right-radius: $tab-item-card-border-radius;
+  }
+}
+
+.lin-tab-item-disabled {
+  cursor: default;
+  color: $tab-item-disabled-color;
+  &:hover {
+    color: $tab-item-disabled-color;
+  }
+}

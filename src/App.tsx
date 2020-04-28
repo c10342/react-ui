@@ -8,9 +8,34 @@ import Menu from "./components/Menu/menu";
 import MenuItem from "./components/Menu/menuItem";
 import SubMenu from "./components/Menu/subMenu";
 
+import Tabs from "./components/Tabs/tabs";
+import TabItem from "./components/Tabs/tabItem";
+
+const TabLabel = (props: { title: string }) => {
+  return <div>{props.title}</div>;
+};
+
 function App() {
   return (
     <div className="App" style={{ padding: "20px" }}>
+      <Tabs type="card">
+        <TabItem label={<TabLabel title="我是自定义的"></TabLabel>}>
+          tab1tab1
+        </TabItem>
+        <TabItem label="tab2">tab2tab2</TabItem>
+        <TabItem disabled label="tab3">
+          tab3tab3
+        </TabItem>
+      </Tabs>
+      <Tabs>
+        <TabItem label={<TabLabel title="我是自定义的"></TabLabel>}>
+          tab1tab1
+        </TabItem>
+        <TabItem label="tab2">tab2tab2</TabItem>
+        <TabItem disabled label="tab3">
+          tab3tab3
+        </TabItem>
+      </Tabs>
       <Menu defaultIndex={"0"} defaultOpenMenu={["3"]}>
         <MenuItem>link1</MenuItem>
         <MenuItem disabled>link2</MenuItem>
