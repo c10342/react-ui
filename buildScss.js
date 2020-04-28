@@ -1,15 +1,6 @@
 const cmd = require("node-cmd");
 const path = require("path");
 const fs = require("fs");
-cmd.get(
-  `npx node-sass ${path.join(
-    __dirname,
-    "./src/styles/normal.scss"
-  )} ${path.join(__dirname, "./dist/normal.css")}`,
-  function (err, data, stderr) {
-    console.log("the current working dir is : ", data);
-  }
-);
 const entryDir = path.resolve(__dirname, "./src/components");
 const outputDir = path.resolve(__dirname, "./dist/components");
 function getScssEntry() {
@@ -28,19 +19,54 @@ function getScssEntry() {
   return entryMap;
 }
 const entry = getScssEntry();
-for (const key in entry) {
-  cmd.get(`npx node-sass ${entry[key].entry} ${entry[key].output}`, function (
-    err,
-    data,
-    stderr
-  ) {
-    console.log("the current working dir is : ", data);
-    fs.writeFileSync(
-      path.join(__dirname, `./dist/components/${key}/style/css.js`),
-      `
-          import './index.css'
-          import '../../../normal.css'
-        `
+let buildArr = [];
+buildArr.push(
+  new Promise((resolve, reject) => {
+    cmd.get(
+      `npx node-sass ${path.join(
+        __dirname,
+        "./src/styles/normal.scss"
+      )} ${path.join(__dirname, "./dist/normal.css")}`,
+      function (err, data, stderr) {
+        if (err) {
+          reject(err);
+          return;
+        }
+        console.log("the current working dir is : ", data);
+        resolve();
+      }
     );
+  })
+);
+for (const key in entry) {
+  const promise = new Promise((resolve, reject) => {
+    cmd.get(`npx node-sass ${entry[key].entry} ${entry[key].output}`, function (
+      err,
+      data,
+      stderr
+    ) {
+      if (err) {
+        reject(err);
+        return;
+      }
+      console.log("the current working dir is : ", data);
+      fs.writeFileSync(
+        path.join(__dirname, `./dist/components/${key}/style/css.js`),
+        `
+            import './index.css'
+            import '../../../normal.css'
+          `
+      );
+      resolve();
+    });
   });
+  buildArr.push(promise);
 }
+
+Promise.all(buildArr)
+  .then(() => {
+    console.log("build success");
+  })
+  .catch((e) => {
+    console.log(e);
+  });
