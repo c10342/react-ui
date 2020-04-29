@@ -11,6 +11,11 @@ import SubMenu from "./components/Menu/subMenu";
 import Tabs from "./components/Tabs/tabs";
 import TabItem from "./components/Tabs/tabItem";
 
+import Icon from "./components/Icon/icon";
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { fas } from "@fortawesome/free-solid-svg-icons";
+library.add(fas);
+
 const TabLabel = (props: { title: string }) => {
   return <div>{props.title}</div>;
 };
@@ -18,6 +23,8 @@ const TabLabel = (props: { title: string }) => {
 function App() {
   return (
     <div className="App" style={{ padding: "20px" }}>
+      <Icon icon="coffee" size="5x" theme="danger" />
+      <Icon icon="arrow-down" size="5x" />
       <Tabs type="card">
         <TabItem label={<TabLabel title="我是自定义的"></TabLabel>}>
           tab1tab1

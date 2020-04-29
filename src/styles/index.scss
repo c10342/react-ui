@@ -1,11 +1,5 @@
 // 不需要写_，这是sass的一种写法，告诉sass这些样式不打包到css中，只能做导入，也是一种模块化
 
-// config
-@import "./subIndex";
-
-// layout
-@import "reboot";
-
 // 按钮样式
 @import "../components/Button/style";
 
@@ -17,3 +11,5 @@
 
 // tabs样式
 @import "../components/Tabs/style";
+
+@import "../components/Icon/style";
