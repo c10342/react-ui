@@ -8,7 +8,7 @@ function getScssEntry() {
   fs.readdirSync(entryDir).forEach(function (pathName) {
     const entryName = path.resolve(entryDir, pathName);
     const outputName = path.resolve(outputDir, pathName);
-    let entryFileName = path.resolve(entryName, "index.scss");
+    let entryFileName = path.resolve(entryName, "_style.scss");
     let outputFileName = path.resolve(outputName, "style/index.css");
 
     entryMap[pathName] = {};
@@ -20,24 +20,6 @@ function getScssEntry() {
 }
 const entry = getScssEntry();
 let buildArr = [];
-buildArr.push(
-  new Promise((resolve, reject) => {
-    cmd.get(
-      `npx node-sass ${path.join(
-        __dirname,
-        "./src/styles/normal.scss"
-      )} ${path.join(__dirname, "./dist/normal.css")}`,
-      function (err, data, stderr) {
-        if (err) {
-          reject(err);
-          return;
-        }
-        console.log("the current working dir is : ", data);
-        resolve();
-      }
-    );
-  })
-);
 for (const key in entry) {
   const promise = new Promise((resolve, reject) => {
     cmd.get(`npx node-sass ${entry[key].entry} ${entry[key].output}`, function (
@@ -52,10 +34,7 @@ for (const key in entry) {
       console.log("the current working dir is : ", data);
       fs.writeFileSync(
         path.join(__dirname, `./dist/components/${key}/style/css.js`),
-        `
-            import './index.css'
-            import '../../../normal.css'
-          `
+        "import './index.css'"
       );
       resolve();
     });
