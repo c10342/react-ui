@@ -1,8 +1,10 @@
+@import "../../styles/variables/tabs";
 .lin-tabs {
   display: flex;
   flex-direction: row;
   list-style: none;
   padding: 0;
+  margin: 0;
   border-bottom: $tab-item-card-border-width solid $tab-item-card-border-color;
 }
 
