@@ -1,0 +1,7 @@
+@import "../../styles/variables/icon";
+// 循环
+@each $key, $val in $icon-theme-color {
+  .lin-icon-#{$key} {
+    color: $val;
+  }
+}

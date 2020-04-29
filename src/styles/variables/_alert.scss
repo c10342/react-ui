@@ -1,0 +1,41 @@
+@import "./common";
+
+// alert基本属性
+$alert-padding-y: 0.375rem !default;
+$alert-padding-x: 0.75rem !default;
+$alert-font-family: $font-family-base !default;
+
+// alert边框
+$alert-border-width: $border-width !default;
+
+// alert关闭按钮位置
+$alert-close-top: $alert-padding-y !default;
+$alert-close-right: $alert-padding-x !default;
+
+// alert-message
+$alert-message-font-weight: $font-weight-normal !default;
+$alert-message-font-size: $font-size-base !default;
+$alert-message-line-height: $line-height-base !default;
+$alert-message-color: rgba(0, 0, 0, 0.85) !default;
+
+// alert-title
+$alert-title-font-weight: $font-weight-normal !default;
+$alert-title-font-size: $h6-font-size !default;
+$alert-title-line-height: $line-height-base !default;
+$alert-title-color: rgba(0, 0, 0, 0.85) !default;
+
+// alert-info
+$alert-info-background-color: lighten($info, 50%) !default;
+$alert-info-border-color: lighten($info, 10%) !default;
+
+// alert-success
+$alert-success-background-color: lighten($success, 50%) !default;
+$alert-success-border-color: lighten($success, 10%) !default;
+
+// alert-warning
+$alert-warning-background-color: lighten($warning, 35%) !default;
+$alert-warning-border-color: lighten($warning, 10%) !default;
+
+// alert-error
+$alert-error-background-color: lighten($danger, 40%) !default;
+$alert-error-border-color: lighten($danger, 10%) !default;
