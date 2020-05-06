@@ -1,0 +1,51 @@
+// @for $i from 10 through 20
+// {
+//     .mt-#{$i}
+//     {
+//         margin-top: (1px * $i);
+//     }
+//     .mr-#{$i}
+//     {
+//         margin-right: (1px * $i);
+//     }
+//     .ml-#{$i}
+//     {
+//         margin-left: (1px * $i);
+//     }
+//     .mb-#{$i}
+//     {
+//         margin-bottom: (1px * $i);
+//     }
+// }
+
+.mt-20{
+    margin-top: 20px;
+}
+.mr-20{
+    margin-right: 20px;
+}
+.ml-20{
+    margin-left: 20px;
+}
+.mb-20{
+    margin-bottom: 20px;
+}
+
+// .fade-enter {
+//     opacity: 0;
+// }
+// .fade-enter-active {
+//     opacity: 1;
+//     transition: all .3s;
+// }
+// .fade-exit {
+//     opacity: 1;
+// }
+// .fade-exit-active {
+//     opacity: 0;
+//     transition: all .3s;
+// }
+
+.width-500{
+    width: 500px;
+}
