@@ -1,4 +1,4 @@
-import React from "react";
+import React,{FC} from "react";
 import classnames from "classnames";
 
 import {
@@ -17,10 +17,11 @@ type theme =
   | "dark";
 
 export interface IconProps extends FontAwesomeIconProps {
+  /** 主题颜色 */
   theme?: theme;
 }
 
-const Icon: React.FC<IconProps> = (props) => {
+export const Icon: FC<IconProps> = (props) => {
   const { className, theme, ...restProps } = props;
   const classes = classnames("lin-icon", className, {
     [`lin-icon-${theme}`]: theme,

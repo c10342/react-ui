@@ -1,15 +1,18 @@
-import React, { useContext } from "react";
+import React, { useContext,FC } from "react";
 
 import classnames from "classnames";
 import { TabsContext } from "./tabs";
 
 export interface TabItemProps {
-  label: string | React.ReactNode;
+  /** Tab选项上面的文字 */
+  label: string | React.ReactElement;
+  /** Tab索引 */
   index?: number;
+  /** Tab选项是否被禁用 */
   disabled?: boolean;
 }
 
-const TabItem: React.FC<TabItemProps> = (props) => {
+export const TabItem: FC<TabItemProps> = (props) => {
   const { label, index, children, disabled } = props;
   const context = useContext(TabsContext);
   const classes = classnames("lin-tab-item", {

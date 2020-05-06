@@ -1,16 +1,20 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState,FC } from "react";
 import classnames from "classnames";
 import { MenuContext } from "./menu";
 import MenuItem, { MenuItemProps } from "./menuItem";
 import Icon from "../Icon/icon";
+import Transition from '../Transition/transition'
 
 export interface SubMenuProps {
+  /** 索引 */
   index?: string;
+  /** 下拉菜单选项的文字 */
   title: string;
+  /** 自定义类名 */
   className?: string;
 }
 
-const SubMenu: React.FC<SubMenuProps> = (props) => {
+export const SubMenu: FC<SubMenuProps> = (props) => {
   const { index, title, className, children } = props;
 
   const context = useContext(MenuContext);
@@ -80,7 +84,11 @@ const SubMenu: React.FC<SubMenuProps> = (props) => {
       }
     });
 
-    return <ul className={subMenuClasses}>{childrenComponent}</ul>;
+    return (
+      <Transition animation='zoom-in-top' in={menuOpen} timeout={200}>
+        <ul className={subMenuClasses}>{childrenComponent}</ul>
+      </Transition>
+    );
   };
 
   return (

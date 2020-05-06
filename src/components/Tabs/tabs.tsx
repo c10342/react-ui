@@ -1,11 +1,15 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, useState,FC } from "react";
 
 import TabItem, { TabItemProps } from "./tabItem";
 
 export interface TabsProps {
+  /** 当前激活 tab 面板的 index，默认为0 */
   defaultIndex?: number;
+  /** 点击 Tab 触发的回调函数 */
   onSelect?: (index: number) => void;
+  /** Tabs的样式，两种可选，默认为 line */
   type?: "line" | "card";
+  /** 自定义类名 */
   className?: string;
 }
 
@@ -20,7 +24,7 @@ export const TabsContext = createContext<ITabsContext>({
   type: "line",
 });
 
-const Tabs: React.FC<TabsProps> = (props) => {
+export const Tabs: FC<TabsProps> = (props) => {
   const { defaultIndex, onSelect, children, className, type } = props;
   const [currentActive, setCurrentActive] = useState(defaultIndex);
   const childrenElements = children as React.FunctionComponentElement<any>[];

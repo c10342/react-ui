@@ -1,4 +1,4 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, useState,FC } from "react";
 import classnames from "classnames";
 import MenuItem, { MenuItemProps } from "./menuItem";
 import SubMenu from "./subMenu";
@@ -6,28 +6,31 @@ import SubMenu from "./subMenu";
 // 菜单方向
 type MenuMode = "horizontal" | "vertical";
 
-type SelectCallback = (selectIndex: string) => void;
-
 export interface MenuProps {
-  // 默认高亮的菜单
+  /** 默认 active 的菜单项的索引值 */
   defaultIndex?: string;
+  /** 自定义类名 */
   className?: string;
+  /** 菜单类型 横向或者纵向 */
   mode?: MenuMode;
+  /** 选项的自定义 style */
   style?: React.CSSProperties;
-  onSelect?: SelectCallback;
+  /** 点击菜单项触发的回调函数 */
+  onSelect?: (selectIndex: string) => void;
+  /** 设置子菜单的默认打开 只在纵向模式下生效 */
   defaultOpenMenu?: string[];
 }
 
 interface IMenuContext {
   index: string;
-  onSelect?: SelectCallback;
+  onSelect?: (selectIndex: string) => void;
   mode?: "vertical" | "horizontal";
   defaultOpenMenu?: string[];
 }
 
 export const MenuContext = createContext<IMenuContext>({ index: "0" });
 
-const Menu: React.FC<MenuProps> = (props) => {
+export const Menu: FC<MenuProps> = (props) => {
   const {
     className,
     mode,
