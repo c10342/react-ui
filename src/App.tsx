@@ -11,14 +11,14 @@ import SubMenu from "./components/Menu/subMenu";
 import Tabs from "./components/Tabs/tabs";
 import TabItem from "./components/Tabs/tabItem";
 
+// import AutoComplete from './components/AutoComplete/autoComplete'
 
-import Input from './components/Input/input'
+import Input from "./components/Input/input";
 
 import Icon from "./components/Icon/icon";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { fas } from "@fortawesome/free-solid-svg-icons";
 library.add(fas);
-
 
 const TabLabel = (props: { title: string }) => {
   return <div>{props.title}</div>;
@@ -27,33 +27,13 @@ const TabLabel = (props: { title: string }) => {
 function App() {
   return (
     <div className="App" style={{ padding: "20px" }}>
-      <Input
-        placeholder="漂亮的 Input"
-      />
-      <Input
-        disabled
-        placeholder="disabled input"
-      />
-      <Input
-        icon="search"
-        placeholder="input with icon"
-      />
-      <Input
-        defaultValue="large size"
-        size="lg"
-      />
-      <Input
-        placeholder="small size"
-        size="sm"
-      />
-      <Input
-        defaultValue="prepend text"
-        prepend="https://"
-      />
-      <Input
-        append=".com"
-        defaultValue="google"
-      />
+      <Input placeholder="漂亮的 Input" />
+      <Input disabled placeholder="disabled input" />
+      <Input icon="search" placeholder="input with icon" />
+      <Input defaultValue="large size" size="lg" />
+      <Input placeholder="small size" size="sm" />
+      <Input defaultValue="prepend text" prepend="https://" />
+      <Input append=".com" defaultValue="google" />
       <Icon icon="coffee" size="5x" theme="danger" />
       <Icon icon="arrow-down" size="5x" />
       <Tabs type="card">

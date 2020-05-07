@@ -1,0 +1,16 @@
+@import "./common";
+
+$autoComplete-item-padding-y: 0.5rem !default;
+$autoComplete-item-padding-x: 1rem !default;
+$autoComplete-item-color: #212529 !default;
+
+$autoComplete-item-transition: color 0.15s ease-in-out,
+  border-color 0.15s ease-in-out !default;
+
+$autoComplete-border-width: 1px !default;
+
+$autoComplete-border-color: #dee2e6 !default;
+$autoComplete-z-index: 100 !default;
+
+$autoComplete-box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.12),
+  0 0 6px 0 rgba(0, 0, 0, 0.04) !default;

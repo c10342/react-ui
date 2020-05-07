@@ -1,0 +1,41 @@
+@import "../../styles/variables/autoComplete";
+.lin-dropDown-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.lin-suggstions-loading-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 75px;
+}
+
+.lin-suggstions-item {
+  cursor: pointer;
+  padding: $autoComplete-item-padding-y $autoComplete-item-padding-x;
+  transition: $autoComplete-item-transition;
+  color: $autoComplete-item-color;
+}
+
+.lin-suggstions-active {
+  color: $white;
+  background-color: $primary;
+}
+
+.lin-auto-complete {
+  position: relative;
+}
+
+.lin-dropDown-list {
+  position: absolute;
+  background-color: $white;
+  white-space: nowrap;
+  left: 0;
+  top: calc(100% + 8px);
+  border: $autoComplete-border-width solid $autoComplete-border-color;
+  box-shadow: $autoComplete-box-shadow;
+  width: 100%;
+  z-index: $autoComplete-z-index;
+}
