@@ -22,28 +22,83 @@ const defaultAutoComplete = () => {
     { value: "rando" },
   ];
   const fetchSuggestions = (key: string) => {
-    return new Promise<{ value: string }[]>((resolve) => {
-      setTimeout(() => {
-        const arr = lakers.filter((item) => item.value.includes(key));
-        resolve(arr);
-      }, 2000);
-    });
-    // return lakers.filter((item) => item.value.includes(key));
-  };
-  const handleSelect = (item: DataSourceType) => {
-    console.log(item);
+    return lakers.filter((item) => item.value.includes(key));
   };
   return (
     <div className="width-500">
       <AutoComplete
+        placeholder="请输入"
         fetchSuggestions={fetchSuggestions}
-        onSelect={handleSelect}
+        onSelect={action("selected")}
       />
     </div>
   );
 };
 
-storiesOf("AutoComplete 自动完成", module).add(
-  "默认的 AutoComplete",
-  defaultAutoComplete
-);
+// 自定义下拉选项
+const autoCompleteByOption = () => {
+  const lakers = [
+    { value: "bradley" },
+    { value: "pope" },
+    { value: "caruso" },
+    { value: "cook" },
+    { value: "cousins" },
+    { value: "james" },
+    { value: "AD" },
+    { value: "green" },
+    { value: "howard" },
+    { value: "kuzma" },
+    { value: "McGee" },
+    { value: "rando" },
+  ];
+  const fetchSuggestions = (key: string) => {
+    return lakers.filter((item) => item.value.includes(key));
+  };
+  return (
+    <div className="width-500">
+      <AutoComplete
+        placeholder="请输入"
+        fetchSuggestions={fetchSuggestions}
+        onSelect={action("selected")}
+        renderOptions={(item) => <h2>{item.value}</h2>}
+      />
+    </div>
+  );
+};
+
+const autoCompleteByAsync = () => {
+  const fetchSuggestions = (query: string) => {
+    return fetch("https://api.github.com/search/users?q=" + query)
+      .then((res) => res.json())
+      .then(({ items }) => {
+        return items
+          .slice(0, 10)
+          .map((item: any) => ({ value: item.login, ...item }));
+      });
+  };
+  return (
+    <div className="width-500">
+      <AutoComplete
+        placeholder="请输入"
+        fetchSuggestions={fetchSuggestions}
+        onSelect={action("selected")}
+        renderOptions={(item) => <h2>{item.value}</h2>}
+      />
+    </div>
+  );
+};
+
+storiesOf("AutoComplete 自动完成", module)
+  .addParameters({
+    info: {
+      text: `
+    ## 引用方法
+    ~~~js
+    import {AutoComplete} from 'lin-react-ui
+    ~~~
+    `,
+    },
+  })
+  .add("默认的 AutoComplete", defaultAutoComplete)
+  .add("自定义下拉选项", autoCompleteByOption)
+  .add("异步请求github用户名", autoCompleteByAsync);
