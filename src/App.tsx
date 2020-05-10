@@ -13,6 +13,8 @@ import TabItem from "./components/Tabs/tabItem";
 
 // import AutoComplete from './components/AutoComplete/autoComplete'
 
+import Upload from "./components/Upload/upload";
+
 import Input from "./components/Input/input";
 
 import Icon from "./components/Icon/icon";
@@ -27,6 +29,10 @@ const TabLabel = (props: { title: string }) => {
 function App() {
   return (
     <div className="App" style={{ padding: "20px" }}>
+      <Upload
+        action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
+        beforeUpload={() => true}
+      />
       <Input placeholder="漂亮的 Input" />
       <Input disabled placeholder="disabled input" />
       <Input icon="search" placeholder="input with icon" />
