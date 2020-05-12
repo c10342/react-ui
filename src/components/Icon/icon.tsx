@@ -1,4 +1,4 @@
-import React,{FC} from "react";
+import React, { FC } from "react";
 import classnames from "classnames";
 
 import {
@@ -6,7 +6,7 @@ import {
   FontAwesomeIcon,
 } from "@fortawesome/react-fontawesome";
 
-type theme =
+export type theme =
   | "primary"
   | "secondary"
   | "success"

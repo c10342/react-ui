@@ -1,7 +1,15 @@
-//input
+@import "./common";
 
-
-// Progress bars
+$progress-theme-color: (
+  "primary": $primary,
+  "secondary": $secondary,
+  "success": $success,
+  "info": $info,
+  "warning": $warning,
+  "danger": $danger,
+  "light": $light,
+  "dark": $dark,
+);
 
 $progress-font-size: $font-size-base * 0.75 !default;
 $progress-bg: $gray-200 !default;
