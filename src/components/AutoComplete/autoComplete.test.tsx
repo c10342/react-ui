@@ -12,6 +12,16 @@ import {
 
 import { AutoComplete, AutoCompleteProps } from "./autoComplete";
 
+const mockData = () => {
+  const arr = [];
+  for (let i = 0; i < 11; i++) {
+    arr.push({
+      login: i,
+    });
+  }
+  return arr;
+};
+
 config.disabled = true;
 
 const testArray = [
@@ -112,15 +122,18 @@ describe("AutoComplete 组件", () => {
 
   it("异步操作", async () => {
     cleanup();
+    const fetch1 = (url: string) => {
+      return Promise.resolve({ items: mockData() });
+    };
     const testProps: AutoCompleteProps = {
       fetchSuggestions: (query: string) => {
-        return fetch("https://api.github.com/search/users?q=" + query)
-          .then((res) => res.json())
-          .then(({ items }) => {
+        return fetch1("https://api.github.com/search/users?q=" + query).then(
+          ({ items }) => {
             return items
               .slice(0, 10)
               .map((item: any) => ({ value: item.login, ...item }));
-          });
+          }
+        );
       },
       onSelect: jest.fn(),
       placeholder: "auto-complete",
@@ -135,5 +148,5 @@ describe("AutoComplete 组件", () => {
         wrapper.container.querySelectorAll(".lin-suggstions-item").length
       ).toBe(10);
     });
-  });
+  }, 100000);
 });
