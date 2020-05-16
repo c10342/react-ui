@@ -5,7 +5,9 @@ import Icon from "../Icon/icon";
 import Progress from "../Progress/progress";
 
 interface UploadListProps {
+  /** 文件列表 */
   fileList: UploadFile[];
+  /** 文件被移除的时候触发的回调函数 */
   onRemove: (_file: UploadFile) => void;
 }
 
