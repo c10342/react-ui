@@ -27,7 +27,7 @@
     }
   }
   @each $key, $val in $progress-theme-color {
-    .lin-color-#{$key} {
+    .lin-inner-color-#{$key} {
       background-color: $val;
     }
   }
