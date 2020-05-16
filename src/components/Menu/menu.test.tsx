@@ -11,6 +11,10 @@ import Menu, { MenuProps } from "./menu";
 import MenuItem from "./menuItem";
 import SubMenu from "./subMenu";
 
+jest.mock("../Icon/icon", () => {
+  return () => <i className="fa" />;
+});
+
 const testProps: MenuProps = {
   defaultIndex: "0",
   onSelect: jest.fn(),
@@ -93,26 +97,28 @@ describe("Menu组件和MunuItem组件", () => {
   });
 
   it("水平下拉菜单", async () => {
-    const subMenuElement = wrapper.getByText("sub-menu-1");
-    expect(subMenuElement).not.toBeVisible();
+    const subMenuElement = wrapper.queryByText("sub-menu-1");
+    expect(subMenuElement).toBeFalsy();
     const dropdownElement = wrapper.getByTestId("test-submenu");
     fireEvent.mouseEnter(dropdownElement);
 
     await wait(() => {
+      const subMenuElement = wrapper.getByText("sub-menu-1");
       expect(subMenuElement).toBeVisible();
     });
 
     fireEvent.mouseLeave(dropdownElement);
     await wait(() => {
+      const subMenuElement = wrapper.getByText("sub-menu-1");
       expect(subMenuElement).not.toBeVisible();
     });
   });
 
   it("点击水平下拉菜单", async () => {
-    const subMenuElement = wrapper.getByText("sub-menu-1");
     const dropdownElement = wrapper.getByTestId("test-submenu");
     fireEvent.mouseEnter(dropdownElement);
     await wait(() => {
+      const subMenuElement = wrapper.getByText("sub-menu-1");
       fireEvent.click(subMenuElement);
       expect(subMenuElement).toHaveClass("lin-menu-item-is-active");
       expect(testProps.onSelect).toHaveBeenLastCalledWith("3-0");
