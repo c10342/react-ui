@@ -18,17 +18,60 @@ import Upload from "./components/Upload/upload";
 import Input from "./components/Input/input";
 
 import Icon from "./components/Icon/icon";
-import { library } from "@fortawesome/fontawesome-svg-core";
-import { fas } from "@fortawesome/free-solid-svg-icons";
-library.add(fas);
+
+import Message from "./components/Message";
+import { MessageType } from "./components/Message/message";
+// import { library } from "@fortawesome/fontawesome-svg-core";
+// import { fas } from "@fortawesome/free-solid-svg-icons";
+// library.add(fas);
 
 const TabLabel = (props: { title: string }) => {
   return <div>{props.title}</div>;
 };
 
+function showMessage(key: MessageType) {
+  const res = Message[key]({
+    message: key,
+    duration: 0,
+    onClose(id: string) {
+      console.log(key + "---" + id);
+    },
+  });
+
+  setTimeout(res, 5000);
+}
+
 function App() {
   return (
     <div className="App" style={{ padding: "20px" }}>
+      <Button
+        onClick={() => {
+          showMessage("success");
+        }}
+      >
+        success
+      </Button>
+      <Button
+        onClick={() => {
+          showMessage("info");
+        }}
+      >
+        info
+      </Button>
+      <Button
+        onClick={() => {
+          showMessage("error");
+        }}
+      >
+        error
+      </Button>
+      <Button
+        onClick={() => {
+          showMessage("warning");
+        }}
+      >
+        warning
+      </Button>
       <Upload
         action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
         beforeUpload={() => true}

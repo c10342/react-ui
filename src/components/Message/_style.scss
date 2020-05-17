@@ -1,0 +1,26 @@
+@import "../../styles/variables/message";
+
+.lin-message {
+  position: fixed;
+  top: $message-top;
+  left: $message-left;
+  transform: $message-transform;
+  font-size: $font-size-base;
+  &-item {
+    transform-origin: $message-item-transform-origin;
+    transition: $message-item-transition-type $message-item-transition-time;
+    animation: $message-item-animation-name $message-item-animation-time
+      $message-item-animation-ease;
+    line-height: $line-height-base;
+    padding: $message-item-padding-y $message-item-padding-x;
+    width: $message-item-width;
+    margin-top: $message-item-margin-bottom;
+  }
+}
+
+@each $key, $val in $message-theme-color {
+  .lin-message-#{$key} {
+    border: $message-item-border-width solid lighten($val, 10%);
+    background-color: lighten($val, 40%);
+  }
+}
