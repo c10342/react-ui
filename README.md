@@ -1,44 +1,69 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## lin-react-ui
 
-In the project directory, you can run:
+这是一套基于react+typescript的ui组件库
 
-### `npm start`
+### 安装
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+使用 npm 或 yarn 安装
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+```shell script
+npm install lin-react-ui --save
 
-### `npm test`
+yarn add lin-react-ui
+```
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### 使用
 
-### `npm run build`
+- 全量引入
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+引用样式
+```javascript
+import 'lin-react-ui/dist/index.css';
+```
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+使用组件
+```javascript
+import { Button } from 'lin-react-ui';
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+ReactDOM.render(<Button />, mountNode);
+```
 
-### `npm run eject`
+- 按需加载
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+下面两种方式都可以只加载用到的组件。
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+使用 babel-plugin-import（推荐）
+```shell script
+npm install babel-plugin-import -D
+```
+```javascript
+// babel.config.js
+  plugins: [
+    [
+      "import",
+      {
+        libraryName: "lin-ui",
+        camel2DashComponentName: false,
+        camel2UnderlineComponentName: false,
+        customName: function (name) {
+          return `lin-ui/dist/components/${name}`;
+        },
+        style: "css",
+      },
+    ],
+  ]
+```
+然后只需从 lin-react-ui 引入模块即可，无需单独引入样式。等同于下面手动引入的方式。
+```javascript
+// babel-plugin-import 会帮助你加载 JS 和 CSS
+import { Button } from 'lin-react-ui';
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+手动引入
+```javascript
+import Button from 'lin-react-ui/components/Button'; // 加载 JS
+import 'lin-react-ui/components/Button/style/css'; // 加载 CSS
+```
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
