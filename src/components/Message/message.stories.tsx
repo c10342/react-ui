@@ -19,6 +19,7 @@ const MessageWithType = () => {
   return (
     <div>
       <Button
+        className="mr-20"
         onClick={() => {
           showMessage("success");
         }}
@@ -26,6 +27,7 @@ const MessageWithType = () => {
         success
       </Button>
       <Button
+        className="mr-20"
         onClick={() => {
           showMessage("info");
         }}
@@ -33,6 +35,7 @@ const MessageWithType = () => {
         info
       </Button>
       <Button
+        className="mr-20"
         onClick={() => {
           showMessage("error");
         }}
@@ -40,6 +43,7 @@ const MessageWithType = () => {
         error
       </Button>
       <Button
+        className="mr-20"
         onClick={() => {
           showMessage("warning");
         }}

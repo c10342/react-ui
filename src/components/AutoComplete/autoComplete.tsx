@@ -98,7 +98,7 @@ export const AutoComplete: FC<AutoCompleteProps> = (props) => {
       setSuggestions([]);
       setShowDropDown(false);
     }
-  }, [deboundVal]);
+  }, [deboundVal, fetchSuggestions]);
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const val = e.target.value.trim();

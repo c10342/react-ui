@@ -4,7 +4,7 @@ import { storiesOf } from "@storybook/react";
 
 import { action } from "@storybook/addon-actions";
 
-import AutoComplete, { DataSourceType } from "./autoComplete";
+import AutoComplete from "./autoComplete";
 
 const defaultAutoComplete = () => {
   const lakers = [
