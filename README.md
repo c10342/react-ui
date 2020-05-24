@@ -38,21 +38,19 @@ ReactDOM.render(<Button />, mountNode);
 npm install babel-plugin-import -D
 ```
 ```javascript
-// babel.config.js
+// .babelrc.js
   plugins: [
     [
       "import",
       {
-        libraryName: "lin-ui",
-        camel2DashComponentName: false,
-        camel2UnderlineComponentName: false,
-        customName: function (name) {
-          return `lin-ui/dist/components/${name}`;
-        },
+        libraryName: "lin-react-ui",
+        camel2DashComponentName: false, // 是否需要驼峰转短线
+        camel2UnderlineComponentName: false, // 是否需要驼峰转下划线
+        libraryDirectory: "dist/components",
         style: "css",
       },
     ],
-  ]
+  ],
 ```
 然后只需从 lin-react-ui 引入模块即可，无需单独引入样式。等同于下面手动引入的方式。
 ```javascript

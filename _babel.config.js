@@ -4,22 +4,13 @@ module.exports = {
     [
       "import",
       {
-        libraryName: "lin-ui",
+        libraryName: "lin-react-ui",
         camel2DashComponentName: false, // 是否需要驼峰转短线
         camel2UnderlineComponentName: false, // 是否需要驼峰转下划线
-        customName: function (name) {
-          console.log(name);
-
-          return `lin-ui/dist/components/${name}`;
-        },
+        libraryDirectory: "dist/components",
         style: "css",
       },
     ],
-    // ["import", {
-    //   "libraryName": "antd",
-    //   "libraryDirectory": "es",
-    //   "style": "css" // `style: true` 会加载 less 文件
-    // }]
   ],
 };
 
